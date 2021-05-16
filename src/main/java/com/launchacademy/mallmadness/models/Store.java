@@ -5,6 +5,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @NoArgsConstructor
@@ -18,15 +22,21 @@ public class Store {
   @Column(name="id", nullable = false, unique = true)
   private Integer id;
 
+  @NotNull
   @Column(name="name", nullable = false)
   private String name;
 
+  @NotNull
   @Column(name="type")
   private String type;
 
+  @NotNull
+  @Min(1)
+  @Max(5)
   @Column(name="average_cost")
   private Integer average_cost;
 
+  @NotNull
   @Column(name="operating_status")
   private Boolean operating_status;
 }
